@@ -6,15 +6,33 @@ public class EntStateManager : MonoBehaviour
 {
     // Define Ent States
     EntBaseState currentState;
-    EntWanderState wanderState = new EntWanderState();
-    EntSearchWaterState searchState = new EntSearchWaterState();
-    EntMeetingState meetingState = new EntMeetingState();
-    EntFumigateState fumigateState = new EntFumigateState();
-    EntDetectOgreState detectOgreState = new EntDetectOgreState();
+    public EntWanderState wanderState = new EntWanderState();
+    public EntSearchWaterState searchState = new EntSearchWaterState();
+    public EntMeetingState meetingState = new EntMeetingState();
+    public EntFumigateState fumigateState = new EntFumigateState();
+    public EntDetectOgreState detectOgreState = new EntDetectOgreState();
+    public IrrigateTreeState irrigateState = new IrrigateTreeState();
+
+    // Ent variables
+    public bool waterBucket = false;
+    public bool isMeeting = false;
+    public GameObject pondGO;
+    public PondBehaviour pond;
+    public Vector3 pondTransform;
+    public GameObject treeToFumigate;
+    public List<TreeBehaviour> trees = new List<TreeBehaviour>();
 
     // Start is called before the first frame update
     void Start()
     {
+        // get pond position
+        pondTransform = pondGO.transform.position;
+
+        // add ent to pond ent list
+        // pond.GetComponent<PondBehaviour>().ents.Add(this);
+        pond = pondGO.GetComponent<PondBehaviour>();
+        pond.entsTotal++;
+
         SwitchState(wanderState);
     }
 
@@ -28,5 +46,10 @@ public class EntStateManager : MonoBehaviour
     {
         currentState = state;
         currentState.EnterState(this);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // currentState.OnCollisionEnter(this, other);
     }
 }
