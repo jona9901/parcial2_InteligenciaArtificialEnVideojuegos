@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TreeBehaviour : MonoBehaviour
 {
+    public bool isMainTree = false;
     public bool isThirsty = false;
     public bool isPlage = false;
 

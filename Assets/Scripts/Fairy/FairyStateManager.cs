@@ -28,9 +28,9 @@ public class FairyStateManager : MonoBehaviour
     public float collectPollen = 30;
     public float deltaCollectPollinizer = 2;
 
- 
 
 
+    public TreeBehaviour mainTree;
     public List<TreeBehaviour> trees = new List<TreeBehaviour>();
 
     // Start is called before the first frame update

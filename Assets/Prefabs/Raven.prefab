@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3182947062075906268}
   - component: {fileID: 1040443539576349418}
   - component: {fileID: 5613583343773215639}
+  - component: {fileID: -164578311768875823}
+  - component: {fileID: -7392610374508353694}
   m_Layer: 0
   m_Name: Raven
   m_TagString: Untagged
@@ -97,3 +99,54 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-164578311768875823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958977513053530533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd75915a0e58c4439b4a05460729212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vc_Velocity: {x: 0, y: 0, z: 0}
+  vc_Heading: {x: 0, y: 0, z: 0}
+  s_rotSpeed: 20
+  s_MaxSpeed: 10
+  s_MinSpeed: 1
+  jitter: 1.5
+  wanderRadius: 1.5
+  wanderDistance: 1.5
+  pfRadius: 1.5
+  oaRadius: 1.5
+  TargetSeek: {fileID: 0}
+  TargetFlee: {fileID: 0}
+  TargetPursuit: {fileID: 0}
+  path: {fileID: 0}
+  OnSeek: 0
+  OnFlee: 0
+  OnWander: 0
+  OnPursuit: 0
+  OnObstacleAvoidance: 0
+  s_panicDist: 0
+  obstacles: []
+  targetAvoidance: {fileID: 0}
+  avoidanceRadius: 1.5
+--- !u!114 &-7392610374508353694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958977513053530533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01692df374ba1d64eb6c0be0cc3dd3fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: []
+  speed: 5
+  reachDist: 1
+  currentPoint: 0
