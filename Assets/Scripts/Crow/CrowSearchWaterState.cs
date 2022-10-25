@@ -21,7 +21,7 @@ public class CrowSearchWaterState : CrowBaseState
             
     }
 
-    public override void OnCollisionEnter(CrowStateManager crow, Collision other)
+    public override void OnCollisionEnter(CrowStateManager crow, Collider other)
     {
         Debug.Log("OnCollision");
     }

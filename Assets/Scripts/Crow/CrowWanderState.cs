@@ -14,8 +14,8 @@ public class CrowWanderState : CrowBaseState
         Debug.Log("Update State");
     }
 
-    public override void OnCollisionEnter(CrowStateManager crow, Collision other)
+    public override void OnCollisionEnter(CrowStateManager crow, Collider other)
     {
-        TreeBehaviour tree = other.collider.GetComponent<TreeBehaviour>();
+        TreeBehaviour tree = other.GetComponent<TreeBehaviour>();
     }
 }

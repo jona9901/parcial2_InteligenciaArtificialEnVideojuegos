@@ -7,6 +7,7 @@ public class CrowFollowState : CrowBaseState
     public override void EnterState(CrowStateManager crow)
     {
         Debug.Log("Buscando Hada");
+        
     }
 
     public override void UpdateState(CrowStateManager crow)
@@ -21,7 +22,7 @@ public class CrowFollowState : CrowBaseState
 
     }
 
-    public override void OnCollisionEnter(CrowStateManager crow, Collision other)
+    public override void OnCollisionEnter(CrowStateManager crow, Collider other)
     {
         
     }

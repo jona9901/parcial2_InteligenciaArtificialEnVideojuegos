@@ -22,12 +22,17 @@ public class CrowStateManager : MonoBehaviour
     public float thirst = 10;
     public float deltaHunger = 1;
     public float deltaThirst = 2;
-
+    public float stamina = 5;
+    public GameObject cave;
+    public moveVelSimple move;
+    public List<ForestBehaviour> forest = new List<ForestBehaviour>();
+    public ForestBehaviour actualForest;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        move = gameObject.GetComponent<moveVelSimple>();
         // get pond position
         pondTransform = pondGO.transform.position;
         // add ent to pond ent list
@@ -53,7 +58,7 @@ public class CrowStateManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // currentState.OnCollisionEnter(this, other);
+        currentState.OnCollisionEnter(this, other);
     }
 
     

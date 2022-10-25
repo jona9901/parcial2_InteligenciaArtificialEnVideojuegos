@@ -27,9 +27,9 @@ public class CrowEatState : CrowBaseState
             
     }
 
-    public override void OnCollisionEnter(CrowStateManager crow, Collision other)
+    public override void OnCollisionEnter(CrowStateManager crow, Collider other)
     {
-        FairyStateManager fairy = other.collider.gameObject.GetComponent<FairyStateManager>();
+        FairyStateManager fairy = other.GetComponent<Collider>().gameObject.GetComponent<FairyStateManager>();
         if(fairy)
         {
             fairy.kill();
