@@ -5,7 +5,12 @@ using UnityEngine;
 public class OgreStateManager : MonoBehaviour
 {
     // variable declaration
-    private string name = "Ogro 1";
+    public int stamina = 20;
+    public int hungre = 0;
+
+    private float _staminaActionTime = 0.0f;
+    private float _StaminaPeriod = 0.5f;
+    
 
     // Ogre State declarations
     OgreBaseState currentState;
@@ -28,7 +33,12 @@ public class OgreStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Time.time > _staminaActionTime)
+        {
+            stamina--;
+            _staminaActionTime += _StaminaPeriod;
+        }
+        currentState.UpdateState(this);
     }
 
     public void SwitchState(OgreBaseState state)
