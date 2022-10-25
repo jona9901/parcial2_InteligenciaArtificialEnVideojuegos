@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class OgreRestState : OgreBaseState
 {
+    private float _staminaPeriod = 0.5f;
+    private float _staminaActionTime = 0.0f;
     public override void EnterState(OgreStateManager ogre)
     {
         Debug.Log("Ogre is resting");
@@ -9,9 +11,18 @@ public class OgreRestState : OgreBaseState
 
     public override void UpdateState(OgreStateManager ogre)
     {
-        if (ogre.stamina < 20)
+        if (Time.time > _staminaActionTime)
         {
             ogre.stamina++;
+            _staminaActionTime += _staminaPeriod;
+        }
+        if (ogre.isHungry)
+        {
+            ogre.eat();
+        }
+        else if (ogre.isThirsty)
+        {
+            ogre.drink();
         }
     }
 

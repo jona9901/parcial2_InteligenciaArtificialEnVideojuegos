@@ -7,9 +7,12 @@ public class OgreStateManager : MonoBehaviour
     // variable declaration
     public int stamina = 20;
     public int hungre = 0;
+    public int thirst = 0;
+    public bool isHungry = false;
+    public bool isThirsty = false;
 
     private float _staminaActionTime = 0.0f;
-    private float _StaminaPeriod = 0.5f;
+    private float _staminaPeriod = 2f;
     
 
     // Ogre State declarations
@@ -36,7 +39,23 @@ public class OgreStateManager : MonoBehaviour
         if (Time.time > _staminaActionTime)
         {
             stamina--;
-            _staminaActionTime += _StaminaPeriod;
+            hungre++;
+            thirst++;
+            _staminaActionTime += _staminaPeriod;
+        }
+        if (hungre >= 20)
+        {
+            isHungry = true;
+        } else
+        {
+            isHungry = false;
+        }
+        if (thirst >= 30)
+        {
+            isThirsty = true;
+        } else
+        {
+            isHungry = false;
         }
         currentState.UpdateState(this);
     }
@@ -45,5 +64,15 @@ public class OgreStateManager : MonoBehaviour
     {
         currentState = state;
         currentState.EnterState(this);
+    }
+
+    public void eat()
+    {
+        hungre -= 20;
+    }
+
+    public void drink()
+    {
+        thirst -= 30;
     }
 }
