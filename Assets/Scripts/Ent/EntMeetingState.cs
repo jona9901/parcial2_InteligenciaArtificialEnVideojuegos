@@ -8,7 +8,8 @@ public class EntMeetingState : EntBaseState
     public override void EnterState(EntStateManager ent)
     {
         Debug.Log("Ent meeting");
-        // Head to waterPond (transofrm)
+        ent.move.TargetSeek = ent.pondGO;
+        ent.move.OnSeek = true;
     }
 
     public override void UpdateState(EntStateManager ent)
@@ -28,6 +29,8 @@ public class EntMeetingState : EntBaseState
     {
         if ( other.collider.tag == "Water" )
         {
+            ent.move.OnSeek = false;
+            ent.move.OnWander = true;
             ent.pond.entsInLake++;
             _inMeeting = true;
             _isHavingMeeting = ent.pond.isHavingMeeting;

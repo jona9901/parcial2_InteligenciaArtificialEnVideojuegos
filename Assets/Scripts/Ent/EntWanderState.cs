@@ -6,6 +6,7 @@ public class EntWanderState : EntBaseState
     {
         // Call for wander code
         Debug.Log("Wander");
+        ent.pathFollower.onWander = true;
     }
 
     public override void UpdateState(EntStateManager ent)
@@ -13,6 +14,7 @@ public class EntWanderState : EntBaseState
         if ( ent.isMeeting )
         {
             // Stop Wandering
+            ent.pathFollower.onWander = false;
             ent.SwitchState( ent.meetingState );
         }
     }
@@ -21,14 +23,15 @@ public class EntWanderState : EntBaseState
     {
         TreeBehaviour tree = other.collider.GetComponent<TreeBehaviour>();
 
-        if ( tree != null )
+        if ( tree )
         {
             if ( tree.isThirsty )
             {
+                ent.treeToDrink = other.gameObject.GetComponent<TreeBehaviour>();
                 ent.SwitchState( ent.searchState );
             } else if ( tree.isPlage )
             {
-                ent.treeToFumigate = other.collider.gameObject;
+                ent.treeToFumigate = other.collider.gameObject.GetComponent<TreeBehaviour>();
                 ent.SwitchState( ent.fumigateState );
             }
         }

@@ -6,6 +6,8 @@ public class EntSearchWaterState : EntBaseState
     {
         // Search for water
         Debug.Log("Searching for water");
+        ent.move.TargetSeek = ent.pondGO;
+        ent.move.OnSeek = true;
     }
 
     public override void UpdateState(EntStateManager ent)
@@ -21,6 +23,7 @@ public class EntSearchWaterState : EntBaseState
     {
         if ( other.collider.tag == "Water")
         {
+            ent.move.OnSeek = false;
             ent.waterBucket = true;
             ent.SwitchState(ent.irrigateState);
         }

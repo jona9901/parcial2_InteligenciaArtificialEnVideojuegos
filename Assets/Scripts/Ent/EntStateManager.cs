@@ -19,8 +19,11 @@ public class EntStateManager : MonoBehaviour
     public GameObject pondGO;
     public PondBehaviour pond;
     public Vector3 pondTransform;
-    public GameObject treeToFumigate;
+    public TreeBehaviour treeToFumigate;
+    public TreeBehaviour treeToDrink;
     public List<TreeBehaviour> trees = new List<TreeBehaviour>();
+    public moveVelSimple move;
+    public PathFollower pathFollower;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +35,9 @@ public class EntStateManager : MonoBehaviour
         // pond.GetComponent<PondBehaviour>().ents.Add(this);
         pond = pondGO.GetComponent<PondBehaviour>();
         pond.entsTotal++;
+
+        move = gameObject.GetComponent<moveVelSimple>();
+        pathFollower = gameObject.GetComponent<PathFollower>();
 
         SwitchState(wanderState);
     }
