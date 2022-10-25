@@ -12,7 +12,13 @@ public class CrowSearchWaterState : CrowBaseState
 
     public override void UpdateState(CrowStateManager crow)
     {
-        Debug.Log("UpdateState");
+        //Cuando no tiene sed
+        if(crow.thirst > 5)
+        {
+            Debug.Log("Descansa en cueva");
+            crow.SwitchState(crow.restState);
+        }
+            
     }
 
     public override void OnCollisionEnter(CrowStateManager crow, Collision other)

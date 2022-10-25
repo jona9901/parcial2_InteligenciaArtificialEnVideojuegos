@@ -1,28 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CrowFollowState : CrowBaseState
+public class CrowRestState : CrowBaseState
 {
+    
+    
     public override void EnterState(CrowStateManager crow)
     {
-        Debug.Log("Buscando Hada");
+        Debug.Log("Resting in cave");        
     }
 
     public override void UpdateState(CrowStateManager crow)
     {
-        Debug.Log("Comer Hada");
-        if(crow.fairyFound == true)
+
+        if(crow.hunger <= 2)
         {
-
+            Debug.Log("I'm hungry");
             crow.SwitchState(crow.eatState);
-
+        } 
+        if(crow.thirst <= 5)
+        {
+            Debug.Log("I'm thirsty");
+            crow.SwitchState(crow.searchState);
         }
 
     }
 
     public override void OnCollisionEnter(CrowStateManager crow, Collision other)
     {
-        
+
     }
 }
