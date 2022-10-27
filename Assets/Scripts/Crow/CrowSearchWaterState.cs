@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class CrowSearchWaterState : CrowBaseState
 {
+
+    public GameObject pondGO;
+
    public override void EnterState(CrowStateManager crow)
     {
         // Search for water
         Debug.Log("Searching for water");
+
+        crow.move.TargetSeek = pondGO;
+        crow.move.OnSeek = true;
+
     }
 
     public override void UpdateState(CrowStateManager crow)
@@ -16,6 +23,7 @@ public class CrowSearchWaterState : CrowBaseState
         if(crow.thirst > 5)
         {
             Debug.Log("Descansa en cueva");
+            crow.move.OnSeek = false;
             crow.SwitchState(crow.restState);
         }
             

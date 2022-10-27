@@ -6,7 +6,7 @@ public class CrowStateManager : MonoBehaviour
 {
      // Define Crow States
     CrowBaseState currentState;
-    public CrowWanderState wanderState = new CrowWanderState(); //2ander
+    
     public CrowSearchWaterState searchState = new CrowSearchWaterState(); //bebe-estanque
     public CrowEatState eatState = new CrowEatState(); //comer-hada
     public CrowFollowState followState = new CrowFollowState(); //busca-hada
@@ -21,21 +21,20 @@ public class CrowStateManager : MonoBehaviour
     public float hunger = 10;
     public float thirst = 10;
     public float deltaHunger = 1;
-    public float deltaThirst = 2;
-
-    
+    public float deltaThirst = 2;    
+    public moveVelSimple move;
 
     // Start is called before the first frame update
     void Start()
     {
+        move = gameObject.GetComponent<moveVelSimple>();
         // get pond position
         pondTransform = pondGO.transform.position;
         // add ent to pond ent list
         // pond.GetComponent<PondBehaviour>().ents.Add(this);
         pond = pondGO.GetComponent<PondBehaviour>();
         //pond.crowTotal++;
-
-        SwitchState(wanderState);
+        
     }
 
     // Update is called once per frame
@@ -43,6 +42,7 @@ public class CrowStateManager : MonoBehaviour
     {
         hunger -= Time.deltaTime / deltaHunger;
         thirst -= Time.deltaTime / deltaThirst;
+
     }
 
     public void SwitchState(CrowBaseState state)

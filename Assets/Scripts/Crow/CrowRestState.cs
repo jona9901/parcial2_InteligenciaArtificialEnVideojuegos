@@ -3,10 +3,18 @@ using UnityEngine;
 public class CrowRestState : CrowBaseState
 {
     
-    
+    public GameObject cave;
+
     public override void EnterState(CrowStateManager crow)
     {
-        Debug.Log("Resting in cave");        
+        Debug.Log("Resting in cave");
+        crow.move.TargetSeek = cave;
+        crow.move.OnSeek = true;
+        float distanceC2C = Vector3.Distance(crow.gameObject.transform.position, cave.transform.position); 
+        if (distanceC2C <= 0)
+        {
+            crow.move.OnSeek = false;
+        }     
     }
 
     public override void UpdateState(CrowStateManager crow)
