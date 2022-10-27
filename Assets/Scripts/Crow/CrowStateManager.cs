@@ -50,6 +50,8 @@ public class CrowStateManager : MonoBehaviour
         hunger -= Time.deltaTime / deltaHunger;
         thirst -= Time.deltaTime / deltaThirst;
 
+        move.OnSeek = false;
+
         float distance2player = Vector3.Distance(gameObject.transform.position, player.transform.position);
         if (distance2player <= 5.0f)
         {
@@ -59,10 +61,9 @@ public class CrowStateManager : MonoBehaviour
             {
                 //Robar bolsa
                 Debug.Log("robar bolsa polen");
+                move.OnSeek = false;
             }
         }
-
-        
 
         currentState.UpdateState(this);
     }
