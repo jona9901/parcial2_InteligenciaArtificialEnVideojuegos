@@ -8,5 +8,5 @@ public abstract class FairyBaseState
 
     public abstract void UpdateState(FairyStateManager fairy);
     
-    public abstract void OnCollisionEnter(FairyStateManager fairy, Collision other);
+    public abstract void OnCollisionEnter(FairyStateManager fairy, Collider other);
 }

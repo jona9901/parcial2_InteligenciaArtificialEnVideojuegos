@@ -8,6 +8,10 @@ public class TreeBehaviour : MonoBehaviour
     public float timeToPollinize;
     public float thirstness;
 
+    public float treePollenRemaining = 10f;
+    private float deltaTreePollenRemaining = 2f;
+
+
     private bool unlocked = false;
 
     // Start is called before the first frame update
@@ -29,6 +33,11 @@ public class TreeBehaviour : MonoBehaviour
 
         if (timeToPollinize > 0) isPlage = false;
         else isPlage = true;
+
+
+
+        treePollenRemaining -= Time.deltaTime / deltaTreePollenRemaining;
+
     }
 
     public void startMeeting()

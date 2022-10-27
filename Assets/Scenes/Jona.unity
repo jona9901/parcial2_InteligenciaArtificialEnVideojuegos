@@ -963,6 +963,7 @@ Transform:
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1633,6 +1634,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -2261,6 +2263,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -2598,6 +2601,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -36.41406, y: -5.344183, z: -7.7483997}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -2956,7 +2960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1552789624465689307, guid: 81b6067ea14e8f84ba3b2afe49803ad0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34.620003
+      value: -41.3
       objectReference: {fileID: 0}
     - target: {fileID: 1552789624465689307, guid: 81b6067ea14e8f84ba3b2afe49803ad0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2964,7 +2968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1552789624465689307, guid: 81b6067ea14e8f84ba3b2afe49803ad0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.43
+      value: 22.04
       objectReference: {fileID: 0}
     - target: {fileID: 1552789624465689307, guid: 81b6067ea14e8f84ba3b2afe49803ad0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3063,6 +3067,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 554691428}
   - {fileID: 364085114}
