@@ -8,6 +8,7 @@ TagManager:
   - Tree
   - MainTree
   - Ogre
+  - Fairy
   layers:
   - Default
   - TransparentFX
