@@ -35,6 +35,9 @@ public class OgreStateManager : MonoBehaviour
     void Start()
     {
         move = gameObject.GetComponent<moveVelSimple>();
+        stamina = Random.Range(0, 20);
+        hungre = Random.Range(0, 20);
+        thirst = Random.Range(0, 30);
         // Starting the state of the machine
         SwitchState(restState);
     }
