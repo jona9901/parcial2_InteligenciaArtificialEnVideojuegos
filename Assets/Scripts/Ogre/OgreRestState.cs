@@ -7,23 +7,26 @@ public class OgreRestState : OgreBaseState
     public override void EnterState(OgreStateManager ogre)
     {
         Debug.Log("Ogre is resting");
+        ogre.move.TargetSeek = ogre.cave;
+        ogre.move.OnSeek = true;
     }
 
     public override void UpdateState(OgreStateManager ogre)
-    {
-        if (Time.time > _staminaActionTime)
+    { 
+        float distance = Vector3.Distance(ogre.cave.transform.position, ogre.transform.position);
+        if ( distance <= 1.2 )
         {
-            ogre.stamina++;
-            _staminaActionTime += _staminaPeriod;
+            //ogre.move.OnSeek = false;
+            if (Time.time > _staminaActionTime)
+            {
+                ogre.stamina += 4;
+                _staminaActionTime += _staminaPeriod;
+            }
+            if (ogre.isHungry) ogre.SwitchState(ogre.searchState);
+            else if (ogre.isThirsty) ogre.SwitchState(ogre.drinkState);
+             
         }
-        if (ogre.isHungry)
-        {
-            ogre.eat();
-        }
-        else if (ogre.isThirsty)
-        {
-            ogre.drink();
-        }
+        
     }
 
     public override void OnCollisionEnter(OgreStateManager ogre, Collision other)

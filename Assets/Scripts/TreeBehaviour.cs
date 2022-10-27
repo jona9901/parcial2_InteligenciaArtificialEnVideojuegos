@@ -24,7 +24,7 @@ public class TreeBehaviour : MonoBehaviour
 
         thirstness += Time.deltaTime;
 
-        if (thirstness > 15) isThirsty = true;
+        if (thirstness >= 15) isThirsty = true;
         else isThirsty = false;
 
         if (timeToPollinize > 0) isPlage = false;

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -1604935262446171832}
   m_Layer: 0
   m_Name: Fairy
-  m_TagString: Untagged
+  m_TagString: Fairy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,6 +151,7 @@ MonoBehaviour:
   speed: 5
   reachDist: 1
   currentPoint: 0
+  onWander: 0
 --- !u!114 &-1604935262446171832
 MonoBehaviour:
   m_ObjectHideFlags: 0
