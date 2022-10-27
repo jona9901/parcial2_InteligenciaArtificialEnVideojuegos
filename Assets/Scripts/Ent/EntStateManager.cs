@@ -21,9 +21,11 @@ public class EntStateManager : MonoBehaviour
     public Vector3 pondTransform;
     public TreeBehaviour treeToFumigate;
     public TreeBehaviour treeToDrink;
-    public List<TreeBehaviour> trees = new List<TreeBehaviour>();
+    public TreeBehaviour treeHieve;
+    public List<TreeBehaviour> trees;
     public moveVelSimple move;
     public PathFollower pathFollower;
+    public float radius = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +47,16 @@ public class EntStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Meeting
+        if (isMeeting)
+        {
+            // Stop Wandering
+            move.OnWander = false;
+            move.OnSeek = false;
+            SwitchState(meetingState);
+        }
+
+        currentState.UpdateState(this);
     }
 
     public void SwitchState(EntBaseState state)
@@ -56,6 +67,10 @@ public class EntStateManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // currentState.OnCollisionEnter(this, other);
+        if (other.gameObject.tag == "Ogre")
+        {
+            SwitchState(detectOgreState);
+        }
+        currentState.OnCollisionEnter(this, other);
     }
 }

@@ -12,20 +12,16 @@ public class EntSearchWaterState : EntBaseState
 
     public override void UpdateState(EntStateManager ent)
     {
-        if (ent.isMeeting)
-        {
-            // Stop search for water
-            ent.SwitchState(ent.meetingState);
-        }
-    }
-
-    public override void OnCollisionEnter(EntStateManager ent, Collision other)
-    {
-        if ( other.collider.tag == "Water")
-        {
+        float distance = Vector3.Distance(ent.pondGO.transform.position, ent.gameObject.transform.position);
+        if (distance <= 1.2f) {
             ent.move.OnSeek = false;
             ent.waterBucket = true;
             ent.SwitchState(ent.irrigateState);
         }
+    }
+
+    public override void OnCollisionEnter(EntStateManager ent, Collider other)
+    {
+
     }
 }

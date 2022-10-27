@@ -2,38 +2,55 @@ using UnityEngine;
 
 public class EntWanderState : EntBaseState
 {
+    TreeBehaviour currentTree;
+    
     public override void EnterState(EntStateManager ent)
     {
+        ent.move.OnSeek = false;
         // Call for wander code
         Debug.Log("Wander");
-        ent.pathFollower.onWander = true;
+        ent.move.OnWander = true;
     }
 
     public override void UpdateState(EntStateManager ent)
     {
-        if ( ent.isMeeting )
+        Debug.Log("Update");
+        float distance = Vector3.Distance(ent.treeHieve.gameObject.transform.position, ent.gameObject.transform.position);
+
+        /*
+        // return the ent to the 
+        if (Vector3.Distance(ent.treeHieve.gameObject.transform.position, ent.gameObject.transform.position) >= ent.radius)
         {
-            // Stop Wandering
-            ent.pathFollower.onWander = false;
-            ent.SwitchState( ent.meetingState );
+            ent.move.OnWander = false;
+            ent.move.TargetSeek = ent.treeHieve.gameObject;
+            ent.move.OnSeek = true;
+        } else
+        {
+            ent.move.OnSeek = false;
+            ent.move.OnWander = true;
         }
-    }
-
-    public override void OnCollisionEnter(EntStateManager ent, Collision other)
-    {
-        TreeBehaviour tree = other.collider.GetComponent<TreeBehaviour>();
-
-        if ( tree )
+        */
+        for (int i = 0; i < ent.trees.Count; i++)
         {
-            if ( tree.isThirsty )
+            currentTree = ent.trees[i];
+            if (currentTree.isPlage) // detect if a tree is thirsty
             {
-                ent.treeToDrink = other.gameObject.GetComponent<TreeBehaviour>();
-                ent.SwitchState( ent.searchState );
-            } else if ( tree.isPlage )
+                ent.move.OnWander = false;
+                ent.treeToFumigate = currentTree;
+                ent.SwitchState(ent.fumigateState);
+            } else if (currentTree.isThirsty) // detect if a tree is thirsty
             {
-                ent.treeToFumigate = other.collider.gameObject.GetComponent<TreeBehaviour>();
-                ent.SwitchState( ent.fumigateState );
+                ent.move.OnWander = false;
+                ent.treeToDrink = currentTree;
+                ent.SwitchState(ent.searchState);
             }
         }
+        
+
+    }
+
+    public override void OnCollisionEnter(EntStateManager ent, Collider other)
+    {
+        
     }
 }

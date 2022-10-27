@@ -25,12 +25,12 @@ public class EntMeetingState : EntBaseState
         }
     }
 
-    public override void OnCollisionEnter(EntStateManager ent, Collision other)
+    public override void OnCollisionEnter(EntStateManager ent, Collider other)
     {
-        if ( other.collider.tag == "Water" )
+        if ( other.tag == "Water" )
         {
             ent.move.OnSeek = false;
-            ent.move.OnWander = true;
+            //ent.move.OnWander = true;
             ent.pond.entsInLake++;
             _inMeeting = true;
             _isHavingMeeting = ent.pond.isHavingMeeting;

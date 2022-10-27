@@ -23,6 +23,7 @@ public class PondBehaviour : MonoBehaviour
         if ( entsInLake == entsTotal )
         {
             isHavingMeeting = true;
+            havingMeeting();
         }
     }
 

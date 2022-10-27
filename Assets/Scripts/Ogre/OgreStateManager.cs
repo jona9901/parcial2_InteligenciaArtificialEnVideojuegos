@@ -75,4 +75,9 @@ public class OgreStateManager : MonoBehaviour
     {
         thirst -= 30;
     }
+
+    public void kill()
+    {
+        Destroy(this);
+    }
 }
