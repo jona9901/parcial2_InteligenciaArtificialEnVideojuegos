@@ -5,16 +5,13 @@ using UnityEngine;
 public class CrowFollowState : CrowBaseState
 {
 
-    public GameObject[] forest;
-    public GameObject currentForest;
-
     public override void EnterState(CrowStateManager crow)
     {
         Debug.Log("Buscando Hada");
-        int m = Random.Range(0, forest.Length);
-        currentForest = forest[m];
+        int m = Random.Range(0, crow.forest.Count);
+        crow.currentForest = crow.forest[m].gameObject;
 
-        crow.move.TargetSeek = currentForest;
+        crow.move.TargetSeek = crow.currentForest;
         crow.move.OnSeek = true;
 
         
@@ -22,7 +19,7 @@ public class CrowFollowState : CrowBaseState
 
     public override void UpdateState(CrowStateManager crow)
     {
-        float distanceC2F = Vector3.Distance(crow.gameObject.transform.position, currentForest.transform.position);  
+        float distanceC2F = Vector3.Distance(crow.gameObject.transform.position, crow.currentForest.transform.position);  
 
         if (distanceC2F <= 5)
         {
@@ -31,7 +28,7 @@ public class CrowFollowState : CrowBaseState
         }
 
         Debug.Log("Comer Hada");
-        if(crow.fairyFound == true)
+        if(crow.fairyFound = true)
         {
             crow.SwitchState(crow.eatState);
         }

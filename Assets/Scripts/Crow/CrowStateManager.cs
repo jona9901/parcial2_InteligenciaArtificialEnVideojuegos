@@ -14,15 +14,21 @@ public class CrowStateManager : MonoBehaviour
 
     // Crow variables
     public GameObject pondGO;
+    public GameObject cave;
+    public GameObject fairy;
+    //public GameObject[] forest;
+    public GameObject currentForest;
     public PondBehaviour pond;
     public Vector3 pondTransform;
-    public List<TreeBehaviour> trees = new List<TreeBehaviour>();
     public bool fairyFound = false;
-    public float hunger = 10;
-    public float thirst = 10;
-    public float deltaHunger = 1;
-    public float deltaThirst = 2;    
+    public float hunger = 10.0f;
+    public float thirst = 10.0f;
+    public float deltaHunger = 1.0f;
+    public float deltaThirst = 2.0f;    
     public moveVelSimple move;
+    public List<GameObject> forest;
+    public GameObject player;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +40,7 @@ public class CrowStateManager : MonoBehaviour
         // pond.GetComponent<PondBehaviour>().ents.Add(this);
         pond = pondGO.GetComponent<PondBehaviour>();
         //pond.crowTotal++;
+        SwitchState(restState);
         
     }
 
@@ -43,6 +50,21 @@ public class CrowStateManager : MonoBehaviour
         hunger -= Time.deltaTime / deltaHunger;
         thirst -= Time.deltaTime / deltaThirst;
 
+        float distance2player = Vector3.Distance(gameObject.transform.position, player.transform.position);
+        if (distance2player <= 5.0f)
+        {
+            move.TargetSeek = player;
+            move.OnSeek = true;
+            if (distance2player < 1.5f)
+            {
+                //Robar bolsa
+                Debug.Log("robar bolsa polen");
+            }
+        }
+
+        
+
+        currentState.UpdateState(this);
     }
 
     public void SwitchState(CrowBaseState state)
@@ -54,6 +76,11 @@ public class CrowStateManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // currentState.OnCollisionEnter(this, other);
+    }
+
+    public void kill()
+    {
+        Destroy(this);
     }
 
     

@@ -61,7 +61,8 @@ public class moveVelSimple : MonoBehaviour {
         vn_Velocity = Vector3.zero;
 
         if (OnSeek )
-        { if (Vector3.Distance(TargetSeek.transform.position, transform.position) > 1.0)
+        { 
+            if (Vector3.Distance(TargetSeek.transform.position, transform.position) > 1.0)
                 vn_Velocity = vn_Velocity + Seek(TargetSeek.transform.position);
             else
                 //vn_Velocity = Vector3.zero;
